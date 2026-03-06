@@ -8,8 +8,21 @@
   </head>
   <body>
     <header>
-      <h1>Mergington High School</h1>
-      <h2>Extracurricular Activities</h2>
+      <div class="header-top-row">
+        <div>
+          <h1>Mergington High School</h1>
+          <h2>Extracurricular Activities</h2>
+        </div>
+        <div class="auth-panel">
+          <div id="current-user" class="hidden"></div>
+          <form id="login-form" class="login-form">
+            <input type="email" id="login-username" placeholder="email" required />
+            <input type="password" id="login-password" placeholder="password" required />
+            <button type="submit">Login</button>
+          </form>
+          <button id="logout-btn" class="hidden" type="button">Logout</button>
+        </div>
+      </div>
     </header>
 
     <main>
@@ -38,6 +51,11 @@
           <button type="submit">Sign Up</button>
         </form>
         <div id="message" class="hidden"></div>
+        <p class="helper-text">
+          Demo accounts: <code>admin@mergington.edu/admin123</code>,
+          <code>teacher@mergington.edu/teacher123</code>,
+          <code>student@mergington.edu/student123</code>
+        </p>
       </section>
     </main>
 

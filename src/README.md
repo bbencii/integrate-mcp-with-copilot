@@ -5,7 +5,9 @@ A super simple FastAPI application that allows students to view and sign up for 
 ## Features
 
 - View all available extracurricular activities
-- Sign up for activities
+- Sign up for activities (authenticated)
+- Login/logout session authentication
+- Role-based access control (Admin / Teacher / Student)
 
 ## Getting Started
 
@@ -30,7 +32,20 @@ A super simple FastAPI application that allows students to view and sign up for 
 | Method | Endpoint                                                          | Description                                                         |
 | ------ | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
 | GET    | `/activities`                                                     | Get all activities with their details and current participant count |
-| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity                                             |
+| POST   | `/auth/login`                                                     | Login and get a session token                                       |
+| POST   | `/auth/logout`                                                    | Logout current session                                               |
+| GET    | `/auth/me`                                                        | Get current user and role                                            |
+| GET    | `/admin/users`                                                    | Admin-only user listing                                              |
+| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity (student/teacher/admin)                     |
+| DELETE | `/activities/{activity_name}/unregister?email=student@mergington.edu` | Unregister a student (teacher/admin only)                       |
+
+## Demo Accounts
+
+- `admin@mergington.edu` / `admin123`
+- `teacher@mergington.edu` / `teacher123`
+- `student@mergington.edu` / `student123`
+
+Pass the session token returned by `/auth/login` as an `Authorization: Bearer <token>` header.
 
 ## Data Model
 
